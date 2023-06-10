@@ -1,0 +1,26 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --poll main.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Manav-404/tic-tac-toe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Manav-404/tic-tac-toe/issues"
+  },
+  "homepage": "https://github.com/Manav-404/tic-tac-toe#readme",
+  "dependencies": {
+    "@types/node": "^20.2.6",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.1.3"
+  }
+}
