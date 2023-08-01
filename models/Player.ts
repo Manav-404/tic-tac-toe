@@ -1,3 +1,6 @@
+import { input } from "../main";
+import { Cell } from "./Cell";
+import { Move } from "./Move";
 import { PlayerType } from "./PlayerType";
 
 export class Player {
@@ -32,6 +35,16 @@ export class Player {
 
     public setPlayerType(playerType: PlayerType): void{
         this.playerType = playerType;
+    }
+
+
+    public async decideMove(): Promise<Move>{
+        let row = await Number(input('Please enter the row'));
+        let col = await Number(input('Please enter the col'));
+
+        return new Move(this, new Cell(row, col));
+
+
     }
 
 

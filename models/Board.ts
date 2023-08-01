@@ -1,4 +1,5 @@
 import { Cell } from "./Cell";
+import { CellStatus } from "./CellStatus";
 
 export class Board {
     private board : Cell[][]
@@ -17,6 +18,19 @@ export class Board {
 
     public setBoard(board: Cell[][]): void{
         this.board = board
+    }
+
+    public display(){
+        let dimension = this.getBoard().length
+        for(let i=0; i<dimension; i++){
+            for(let j=0; j<dimension; j++){
+                if(this.getBoard()[i][j].getCellStatus()===CellStatus.EMPTY){
+                    console.log("| |")
+                }else{
+                    console.log(`| ${this.getBoard()[i][j].getPlayer().getSymbol()} |`)
+                }
+            }
+        }
     }
 
 }

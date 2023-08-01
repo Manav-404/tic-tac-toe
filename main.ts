@@ -5,6 +5,7 @@ import { PlayerType } from './models/PlayerType';
 import { Bot } from './models/Bot';
 import { BotDifficulty } from './models/BotDifficulty';
 import { GameController } from './controller/GameController';
+import { GameStatus } from './models/GameStatus';
 let cmd = readline.createInterface({input: stdin, output: stdout});
 const main  = async ()=>{
 
@@ -33,11 +34,19 @@ const main  = async ()=>{
         players.push(new Bot(botName, botSymbol, PlayerType.BOT, BotDifficulty.EASY));
     }
 
-    let game = gameController.createGame(players, Number(dimensionsInfo))
+    let game = gameController.createGame(players, Number(dimensionsInfo));
+    while(game.getGameStatus()===GameStatus.IN_PROGRESS){
+        gameController.displayBoard(game);
+        game.executeMove();
+    }
 
+    if(game.getGameStatus()===GameStatus.ENDED){
+        let winner = game.getWinner().getName();
+        console.log('Game has ended and the winner is:', winner);
+    }
 }
 
-function input(command: string): Promise<string>{
+export function input(command: string): Promise<string>{
     return new Promise((resolve, reject)=>{
         cmd.question(command, (answer)=>{
             resolve(answer);

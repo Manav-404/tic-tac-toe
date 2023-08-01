@@ -1,3 +1,4 @@
+import { OrderOneGameWinningStrategy } from "../strategies/gamewinningstrategy/OrderOneWinningStrategy";
 import { Board } from "./Board";
 import { Game } from "./Game";
 import { GameStatus } from "./GameStatus";
@@ -31,6 +32,7 @@ export class GameBuilder {
             game.setBoard(new Board(this.dimension));
             game.setMoves([])
             game.setNextPlayerIndex(0);
+            game.setGameWinningStrategy(new OrderOneGameWinningStrategy(this.dimension));
             return game;
             
         }
